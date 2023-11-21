@@ -1,13 +1,9 @@
 import React from "react";
+import '../App.css';
 
 
 
 function YourBotArmy({ botCollection }) {
-
-
-
-    
-    
     
     return (
         <div>
@@ -15,7 +11,10 @@ function YourBotArmy({ botCollection }) {
         <ul>
             {
                 botCollection.map(bot => {
-                    return <li key={bot.id}>{bot.name}</li>
+                    return <li key={bot.id} className="liBot">
+                        {bot.name}
+                        
+                        </li>
                 })
             }
         </ul>
