@@ -1,7 +1,7 @@
 import React from "react";
 
 
-function BotCard({ bot, addBotToArmy, removeBotFromArmy }) {
+function BotCard({ bot, addBotToArmy, removeBotFromArmy, removeBotFromService }) {
     const { id, name, avatar_url, catchphrase } = bot;
     
     return (
@@ -26,6 +26,13 @@ function BotCard({ bot, addBotToArmy, removeBotFromArmy }) {
                 onClick={() => removeBotFromArmy(id)}
             >
                 Fire Me
+            </button>
+            <button
+            className="ui button negative"
+            onClick={() => removeBotFromService(id)} >
+                <span aria-label="trash" role="img">
+                🗑
+                </span>
             </button>
             </div>
         </div>

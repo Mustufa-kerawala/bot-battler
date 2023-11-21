@@ -30,7 +30,23 @@ function BotCollection() {
         const updatedBots = army.filter(bot => bot.id !== id)
         setArmy(updatedBots)
     }
+
+    function removeBotFromCollection(id) {
+        const updatedBots = bots.filter(bot => bot.id !== id)
+        setBots(updatedBots)
+    }
     
+    // Step 5 - Create removeFromService function to remove bot from backend...
+    function removeFromService(id) {
+        fetch(`http://localhost:3001/bots/${id}`, {
+            method: "DELETE"
+        })
+        .then(resp => resp.json())
+        .then(() => {
+            removeBotFromArmy(id)
+            removeBotFromCollection(id)
+        })
+    }
     
     return (
         <div>
@@ -41,7 +57,11 @@ function BotCollection() {
 
         {
             bots.map(bot => {
-                return <BotCard key={bot.id} bot={bot} addBotToArmy={addBotToArmy} removeBotFromArmy={removeBotFromArmy} />
+                return <BotCard key={bot.id} 
+                bot={bot} 
+                addBotToArmy={addBotToArmy} 
+                removeBotFromArmy={removeBotFromArmy}
+                removeBotFromService={removeFromService} />
             })
         }
         </div>
